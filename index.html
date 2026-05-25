@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Jamui Yatra - Auto, Toto & Four Wheeler Booking</title>
+  <meta name="description" content="Jamui Yatra par Auto, Toto aur Four Wheeler booking karein. KM ke hisab se rate dekhein aur online booking request bhejein." />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div id="header-placeholder"></div>
+
+  <main>
+    <section class="hero" id="home">
+      <div class="container hero-content">
+        <span class="badge">Jamui Local Vehicle Booking</span>
+        <h1>Auto, Toto aur Four Wheeler ab aasani se book karein</h1>
+        <p>Pickup address, destination, date, time aur payment option fill karein. Estimated fare KM ke hisab se turant dekhein.</p>
+        <div class="hero-actions">
+          <a href="#vehicles" class="btn btn-primary">Book Vehicle</a>
+          <a href="#rates" class="btn btn-outline">View Rates</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="vehicles">
+      <div class="container">
+        <div class="section-title">
+          <h2>Choose Your Vehicle</h2>
+          <p>Apni journey ke hisab se vehicle select karein.</p>
+        </div>
+        <div class="vehicle-grid">
+          <div class="vehicle-card">
+            <div class="vehicle-img">🛺</div>
+            <div class="vehicle-body">
+              <h3>Auto</h3>
+              <p>Local market, station pickup aur short distance ke liye best.</p>
+              <div class="rate"><span>Rate</span><strong>₹18/km</strong></div>
+              <ul class="features"><li>Base fare ₹60</li><li>3 passengers</li><li>Local rides</li></ul>
+              <button class="btn btn-dark" onclick="openBooking('Auto')">Book Auto</button>
+            </div>
+          </div>
+
+          <div class="vehicle-card">
+            <div class="vehicle-img">🚗</div>
+            <div class="vehicle-body">
+              <h3>Toto</h3>
+              <p>Budget friendly city ride aur nearby drop ke liye suitable.</p>
+              <div class="rate"><span>Rate</span><strong>₹12/km</strong></div>
+              <ul class="features"><li>Base fare ₹40</li><li>4 passengers</li><li>Low cost ride</li></ul>
+              <button class="btn btn-dark" onclick="openBooking('Toto')">Book Toto</button>
+            </div>
+          </div>
+
+          <div class="vehicle-card">
+            <div class="vehicle-img">🚙</div>
+            <div class="vehicle-body">
+              <h3>Four Wheeler</h3>
+              <p>Family ride, airport/station drop aur outstation trip ke liye best.</p>
+              <div class="rate"><span>Rate</span><strong>₹35/km</strong></div>
+              <ul class="features"><li>Base fare ₹250</li><li>4-6 passengers</li><li>Comfort ride</li></ul>
+              <button class="btn btn-dark" onclick="openBooking('Four Wheeler')">Book Car</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="rates">
+      <div class="container">
+        <div class="section-title">
+          <h2>Rate Chart</h2>
+          <p>Ye demo rate hai. Aap apne business ke hisab se change kar sakte hain.</p>
+        </div>
+        <table class="rate-table">
+          <thead><tr><th>Vehicle</th><th>Base Fare</th><th>Per KM Rate</th><th>Best For</th></tr></thead>
+          <tbody>
+            <tr><td>Auto</td><td>₹60</td><td>₹18/km</td><td>Local travel, station pickup</td></tr>
+            <tr><td>Toto</td><td>₹40</td><td>₹12/km</td><td>Short distance, budget ride</td></tr>
+            <tr><td>Four Wheeler</td><td>₹250</td><td>₹35/km</td><td>Family, outstation, long route</td></tr>
+          </tbody>
+        </table>
+        <div class="info-box">Note: Final fare route, waiting charge, night charge aur availability ke hisab se confirm hoga.</div>
+      </div>
+    </section>
+
+    <section class="section" id="booking">
+      <div class="container">
+        <div class="section-title">
+          <h2>Quick Booking Form</h2>
+          <p>Form submit karne ke baad booking request WhatsApp par ready ho jayegi.</p>
+        </div>
+        <div class="booking-panel">
+          <form id="bookingForm">
+            <div class="form-grid">
+              <div class="form-group"><label>Full Name</label><input name="name" type="text" placeholder="Apna naam likhein" required></div>
+              <div class="form-group"><label>Contact Number</label><input name="phone" type="tel" placeholder="Mobile number" required></div>
+              <div class="form-group"><label>Vehicle</label><select id="vehicle" name="vehicle"><option>Auto</option><option>Toto</option><option>Four Wheeler</option></select></div>
+              <div class="form-group"><label>Approx Distance KM</label><input id="distance" name="distance" type="number" min="1" value="5" required></div>
+              <div class="form-group full"><label>Current / Pickup Address</label><textarea name="pickup" placeholder="Customer ka current address" required></textarea></div>
+              <div class="form-group full"><label>Drop Address</label><textarea name="drop" placeholder="Kaha jana hai uska address" required></textarea></div>
+              <div class="form-group"><label>Date</label><input name="date" type="date" required></div>
+              <div class="form-group"><label>Time</label><input name="time" type="time" required></div>
+              <div class="form-group full"><label>Payment Option</label><select name="payment"><option>Cash</option><option>UPI</option><option>Pay After Ride</option></select></div>
+            </div>
+            <div class="fare-preview" id="farePreview"></div>
+            <button type="submit" class="btn btn-primary">Submit Booking Request</button>
+            <div class="success" id="successMsg">Booking request ready hai. WhatsApp open ho raha hai.</div>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="contact">
+      <div class="container contact-grid">
+        <div class="contact-card"><h3>Need Help?</h3><p>Ride confirmation ke liye call ya WhatsApp karein.</p><p><strong>Phone:</strong> +91 98765 43210</p></div>
+        <div class="contact-card"><h3>Service Area</h3><p>Jamui city, station, market, hospital, village pickup aur nearby areas.</p></div>
+      </div>
+    </section>
+  </main>
+
+  <div class="modal" id="bookingModal">
+    <div class="modal-box">
+      <button class="close-btn" onclick="closeBooking()">×</button>
+      <h2>Book Your Vehicle</h2>
+      <p>Details fill karke booking request bhejein.</p>
+      <div class="booking-panel" style="box-shadow:none;padding:15px 0;border:0">
+        <form id="modalBookingForm" onsubmit="document.getElementById('bookingForm').requestSubmit(); return false;">
+          <p>Form niche page par available hai. Direct booking ke liye close karke Quick Booking Form fill karein.</p>
+          <button type="button" class="btn btn-primary" onclick="closeBooking(); document.getElementById('booking').scrollIntoView();">Go to Booking Form</button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <div id="footer-placeholder"></div>
+  <script src="script.js"></script>
+</body>
+</html>
