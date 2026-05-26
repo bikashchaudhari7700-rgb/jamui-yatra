@@ -151,13 +151,25 @@
       </div>
 
       <div id="hotelFields" class="field-group">
-        <label>Hotel Area / Location</label>
-        <select id="hotelType" onchange="updateEstimate()">
-          <option value="budget">Budget Room</option>
-          <option value="standard">Standard Room</option>
-          <option value="family">Family Room</option>
-          <option value="ac">AC Room</option>
-        </select>
+        <label>Select Hotel</label>
+<select id="hotelName" onchange="updateEstimate()">
+  <option value="">Choose Hotel</option>
+  <option value="hotel-royal">Hotel Royal Residency</option>
+  <option value="hotel-garden">Hotel Garden View</option>
+  <option value="hotel-grand">Hotel Grand Palace</option>
+  <option value="hotel-comfort">Hotel Comfort Inn</option>
+  <option value="hotel-family">Family Stay Hotel</option>
+  <option value="other">Other Hotel</option>
+</select>
+
+<label>Room Type</label>
+<select id="hotelType" onchange="updateEstimate()">
+  <option value="">Select Room Type</option>
+  <option value="budget">Budget Room</option>
+  <option value="standard">Standard Room</option>
+  <option value="family">Family Room</option>
+  <option value="ac">AC Room</option>
+</select>
         <label>Check-out Date</label>
         <input id="checkout" type="date">
         <label>Number of Guests</label>
@@ -167,20 +179,27 @@
       <div id="tiffinFields" class="field-group">
         <label>Meal Type</label>
         <select id="tiffinType" onchange="updateFoodMenu(); updateEstimate()">
-          <option value="breakfast">Breakfast</option>
-          <option value="lunch">Lunch</option>
-          <option value="dinner">Dinner</option>
-          <option value="full">Full Day Tiffin</option>
+          <option value="">Select Meal</option>
+<option value="breakfast">Breakfast</option>
+<option value="lunch">Lunch</option>
+<option value="dinner">Dinner</option>
         </select>
 
         <label>Food Preference</label>
         <select id="foodType" onchange="updateFoodMenu(); updateEstimate()">
-          <option value="veg">Veg</option>
-          <option value="nonveg">Non Veg</option>
+          <option value="">Select Food Type</option>
+<option value="veg">Veg</option>
+<option value="nonveg">Non Veg</option>
         </select>
 
         <label>Choose Food Menu</label>
         <select id="foodMenu" onchange="updateEstimate()"></select>
+
+        <label>Custom Food Request</label>
+<textarea
+id="customFood"
+placeholder="Write your custom food requirement">
+</textarea>
 
         <label>Delivery Address</label>
         <textarea id="tiffinAddress" placeholder="Enter tiffin delivery address"></textarea>
@@ -232,8 +251,12 @@
       <div class="estimate-box">
         <h3>Payment Estimate</h3>
         <p id="estimateText">Select service details to see estimated amount.</p>
-        <div class="amount-row"><span>Total Estimate</span><b id="totalAmount">₹0</b></div>
-        <div class="amount-row"><span>Advance Required</span><b id="advanceAmount">₹0</b></div>
+        <div class="amount-row">
+<span>Total Amount</span>
+<b id="totalAmount">
+Select service details first
+</b>
+</div>
         <small>Final amount may change after availability and route confirmation.</small>
       </div>
 
@@ -245,8 +268,7 @@
 
       <label>Payment Option</label>
       <select id="payment">
-        <option>Advance Paid via QR</option>
-        <option>Cash after confirmation</option>
+        <option>QR Code</option>
         <option>Google Pay</option>
         <option>PhonePe</option>
         <option>UPI</option>
