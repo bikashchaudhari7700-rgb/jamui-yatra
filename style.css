@@ -1,0 +1,9 @@
+
+function openForm(vehicle){
+document.getElementById('bookingModal').style.display='flex';
+document.getElementById('vehicleTitle').innerText='Book '+vehicle;
+}
+
+function closeForm(){
+document.getElementById('bookingModal').style.display='none';
+}
