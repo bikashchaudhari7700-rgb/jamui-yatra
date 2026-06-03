@@ -1,0 +1,10 @@
+{
+  "name": "Jamui Yatra",
+  "short_name": "Jamui Yatra",
+  "description": "Jamui Yatra - Auto, Toto, Four Wheeler, Hotel Booking, Tiffin Service and local service booking in Jamui.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#07823c",
+  "icons": []
+}
