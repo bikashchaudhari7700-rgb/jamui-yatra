@@ -1,8 +1,11 @@
 {
+  "id": "/",
   "name": "Jamui Yatra",
   "short_name": "Jamui Yatra",
+  "description": "Jamui Yatra - Local Ride, Hotel Booking, Tiffin Service and Local Services in Jamui, Bihar.",
   "start_url": "/",
   "display": "standalone",
+  "orientation": "portrait",
   "background_color": "#ffffff",
   "theme_color": "#07823c",
   "icons": [
