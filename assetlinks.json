@@ -1,0 +1,8 @@
+[{
+      "relation": ["delegate_permission/common.handle_all_urls"],
+      "target": {
+        "namespace": "android_app",
+        "package_name": "in.jamuiyatra.twa",
+        "sha256_cert_fingerprints": ["8C:69:94:4D:DD:69:C5:0C:50:1E:15:EC:56:F7:78:7B:09:9C:7F:BD:B4:74:A7:37:9C:F6:73:20:7E:1A:12:EE"]
+      }
+    }]
