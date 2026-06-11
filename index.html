@@ -565,37 +565,66 @@ Managed & Developed by Raja Kumar`;
 });
 </script>
  <script>
-let deferredPrompt;
-
-window.addEventListener('beforeinstallprompt', (e) => {
-    e.preventDefault();
-    deferredPrompt = e;
-
-    document.getElementById('installAppBtn').style.display = 'inline-block';
-});
-
-document.getElementById('installAppBtn').addEventListener('click', async () => {
-
-    if (!deferredPrompt) {
-        alert("Install option is not available right now.");
-        return;
-    }
-
-    deferredPrompt.prompt();
-
-    const result = await deferredPrompt.userChoice;
-
-    if (result.outcome === 'accepted') {
-        console.log('App installed');
-    }
-
-    deferredPrompt = null;
-});
-</script>
- <script>
 if ("serviceWorker" in navigator) {
   navigator.serviceWorker.register("/service-worker.js");
 }
+</script>
+ <!-- Jamui Yatra Install Popup -->
+<div id="installPopup" style="display:none;position:fixed;left:15px;right:15px;bottom:20px;z-index:99999;background:#fff;border-radius:18px;padding:20px;box-shadow:0 8px 35px rgba(0,0,0,.25);text-align:center;max-width:500px;margin:auto;">
+
+    <button onclick="closeInstallPopup()"
+        style="position:absolute;right:12px;top:8px;border:0;background:#eee;border-radius:50%;width:32px;height:32px;font-size:18px;cursor:pointer;">
+        ×
+    </button>
+
+    <h3 style="color:#07823c;margin-bottom:12px;">
+        🙏 JamuiYatra.In में आपका स्वागत है
+    </h3>
+
+    <p style="margin:10px 0 18px;color:#555;line-height:1.7;">
+        आपकी यात्रा मंगलमय हो। 🚖
+
+        <br><br>
+
+        Jamui Yatra पर आप Auto, Toto, Four Wheeler, Hotel Booking,
+        Tiffin Service तथा अन्य स्थानीय सेवाओं की बुकिंग आसानी से कर सकते हैं.
+
+        <br><br>
+
+        हम आपको सुरक्षित, सुविधाजनक और भरोसेमंद सेवाएँ प्रदान करने के लिए सदैव तत्पर हैं।
+
+        <br><br>
+
+        📱 बेहतर अनुभव और तेज़ बुकिंग के लिए Jamui Yatra App Install करें।
+    </p>
+
+    <button onclick="document.getElementById('installAppBtn').click()"
+        style="background:#07823c;color:white;border:0;border-radius:12px;padding:13px 24px;font-size:16px;font-weight:bold;cursor:pointer;">
+        📲 Install App
+    </button>
+
+</div>
+
+<script>
+function closeInstallPopup() {
+    localStorage.setItem("jy_popup_closed", Date.now());
+    document.getElementById("installPopup").style.display = "none";
+}
+
+window.addEventListener("load", function() {
+
+    setTimeout(function() {
+
+        const closedTime = localStorage.getItem("jy_popup_closed");
+        const oneDay = 24 * 60 * 60 * 1000;
+
+        if (!closedTime || (Date.now() - closedTime > oneDay)) {
+            document.getElementById("installPopup").style.display = "block";
+        }
+
+    }, 5000);
+
+});
 </script>
 </body>
 </html>
