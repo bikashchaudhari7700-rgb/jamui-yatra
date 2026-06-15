@@ -598,32 +598,57 @@ if ("serviceWorker" in navigator) {
         📱 बेहतर अनुभव और तेज़ बुकिंग के लिए Jamui Yatra App Install करें।
     </p>
 
-    <button onclick="document.getElementById('installAppBtn').click()"
-        style="background:#07823c;color:white;border:0;border-radius:12px;padding:13px 24px;font-size:16px;font-weight:bold;cursor:pointer;">
-        📲 Install App
-    </button>
+    <button onclick="runInstallApp()"
+style="background:#07823c;color:white;border:0;border-radius:12px;padding:13px 24px;font-size:16px;font-weight:bold;cursor:pointer;">
+📲 Install App
+</button>
 
 </div>
 
 <script>
+let deferredPrompt = null;
+
+window.addEventListener("beforeinstallprompt", function(e) {
+    e.preventDefault();
+    deferredPrompt = e;
+});
+
+function runInstallApp() {
+    if (!deferredPrompt) {
+        alert("Install option abhi available nahi hai. Chrome browser me website open karein, ya app already installed ho sakta hai.");
+        return;
+    }
+
+    deferredPrompt.prompt();
+
+    deferredPrompt.userChoice.then(function(choiceResult) {
+        deferredPrompt = null;
+        document.getElementById("installPopup").style.display = "none";
+    });
+}
+
+const headerInstallBtn = document.getElementById("installAppBtn");
+if (headerInstallBtn) {
+    headerInstallBtn.addEventListener("click", function(e) {
+        e.preventDefault();
+        runInstallApp();
+    });
+}
+
 function closeInstallPopup() {
     localStorage.setItem("jy_popup_closed", Date.now());
     document.getElementById("installPopup").style.display = "none";
 }
 
 window.addEventListener("load", function() {
-
     setTimeout(function() {
-
         const closedTime = localStorage.getItem("jy_popup_closed");
         const oneDay = 24 * 60 * 60 * 1000;
 
         if (!closedTime || (Date.now() - closedTime > oneDay)) {
             document.getElementById("installPopup").style.display = "block";
         }
-
     }, 5000);
-
 });
 </script>
 </body>
